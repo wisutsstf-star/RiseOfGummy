@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://coxr05fi2hrhc"]
+
+[sub_resource type="GDScript" id="GDScript_8w4rr"]
+script/source = "extends Node2D
+
+@export var color: Color = Color(1.0, 0.4, 0.7) # Pink
+@export var duration: float = 2.0
+@export var size: float = 40.0
+@export var pulse_speed: float = 5.0
+
+var _time: float = 0.0
+
+func _ready() -> void:
+	# Add a tween for scale pulsation to make it look alive
+	var tween = create_tween().set_loops()
+	tween.tween_property(self, \"scale\", Vector2(1.2, 1.2), 1.0 / pulse_speed)
+	tween.tween_property(self, \"scale\", Vector2(1.0, 1.0), 1.0 / pulse_speed)
+
+func _process(delta: float) -> void:
+	_time += delta
+	queue_redraw()
+
+func _draw() -> void:
+	# Draw a crosshair/diamond shape similar to the reference
+	var center = Vector2.ZERO
+	var outline_width = 3.0	
+	# Rotate slightly over time for effect
+	var rotation_offset = _time * 2.0
+	
+	# Draw outer diamond
+	var points = PackedVector2Array([
+		Vector2(0, -size),
+		Vector2(size, 0),
+		Vector2(0, size),
+		Vector2(-size, 0),
+		Vector2(0, -size)
+	])
+	
+	draw_polyline(points, color, outline_width, true)
+	
+	# Draw inner diamond (smaller)
+	var inner_size = size * 0.5
+	var inner_points = PackedVector2Array([
+		Vector2(0, -inner_size),
+		Vector2(inner_size, 0),
+		Vector2(0, inner_size),
+		Vector2(-inner_size, 0),
+		Vector2(0, -inner_size)
+	])
+	
+	draw_polyline(inner_points, color, outline_width, true)
+	
+	# Draw center dot
+	draw_circle(center, 4.0, color)
+"
+
+[node name="TargetReticle" type="Node2D" unique_id=657084250]
+script = SubResource("GDScript_8w4rr")

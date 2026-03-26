@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://d3f8kblps01n5"]
+
+[ext_resource type="Script" uid="uid://g26okrvxvd37" path="res://scripts/projectiles/lion_skill_projectile.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://cgrrl3ndnfl3s" path="res://characters/lion/assets/lion_sword_wave_small.png" id="2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wqih8"]
+atlas = ExtResource("2")
+region = Rect2(0, 0, 64, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bbqsy"]
+atlas = ExtResource("2")
+region = Rect2(64, 0, 64, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wqih8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bbqsy")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mw"]
+size = Vector2(64, 86)
+
+[node name="LionMiniWaveProjectile" type="Area2D" unique_id=1884440345]
+position = Vector2(0, -2)
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1")
+push_force = 0.0
+damage_multiplier = 0.2
+destroy_on_hit = true
+auto_fade_delay = 0.12
+fade_speed = 6.0
+speed = 600.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1772330042]
+position = Vector2(1, -1)
+scale = Vector2(0.81875, 0.76406246)
+sprite_frames = SubResource("SpriteFrames_mw")
+animation = &"fly"
+autoplay = "fly"
+frame_progress = 0.19902745
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1859730125]
+position = Vector2(4, 1)
+shape = SubResource("RectangleShape2D_mw")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1163311593]
+position = Vector2(5.000004, -10.999996)
+scale = Vector2(3, 5)
+rect = Rect2(-11, -6, 22.333334, 16)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="queue_free"]

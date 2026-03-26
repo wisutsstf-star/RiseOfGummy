@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cx6g32168abc"]
+
+[ext_resource type="Script" uid="uid://b27gy5l030n5x" path="res://characters/pig/scripts/pig_hemobloom.gd" id="1_script"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a1b2c"]
+radius = 18.0
+
+[node name="PigHemobloom" type="Area2D" unique_id=210709665]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_script")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=9030407]
+shape = SubResource("CircleShape2D_a1b2c")

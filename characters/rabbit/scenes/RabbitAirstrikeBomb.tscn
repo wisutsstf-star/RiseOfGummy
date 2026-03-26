@@ -1,0 +1,110 @@
+[gd_scene format=3 uid="uid://dl4jo7jm4epyv"]
+
+[ext_resource type="Script" uid="uid://os2iqmg8a4jg" path="res://scripts/projectiles/rabbit_airstrike_bomb.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://2jckofp2l3mk" path="res://characters/rabbit/assets/rabbit_bullet_boom.png" id="2_fall"]
+[ext_resource type="Texture2D" uid="uid://be3f7xaofqieg" path="res://characters/rabbit/assets/rabbit_boom.png" id="3_boom"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_boom_1"]
+atlas = ExtResource("3_boom")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_boom_2"]
+atlas = ExtResource("3_boom")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_boom_3"]
+atlas = ExtResource("3_boom")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_boom_4"]
+atlas = ExtResource("3_boom")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_boom_5"]
+atlas = ExtResource("3_boom")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_boom_6"]
+atlas = ExtResource("3_boom")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_boom_7"]
+atlas = ExtResource("3_boom")
+region = Rect2(256, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_boom_8"]
+atlas = ExtResource("3_boom")
+region = Rect2(384, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fall_1"]
+atlas = ExtResource("2_fall")
+region = Rect2(0, 0, 64, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fall_2"]
+atlas = ExtResource("2_fall")
+region = Rect2(64, 0, 64, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bomb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_boom_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_boom_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_boom_3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_boom_4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_boom_5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_boom_6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_boom_7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_boom_8")
+}],
+"loop": false,
+"name": &"boom",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fall_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fall_2")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 8.0
+}]
+
+[node name="RabbitAirstrikeBomb" type="Node2D" unique_id=371620136]
+z_index = 1000
+script = ExtResource("1_script")
+
+[node name="BombSprite" type="AnimatedSprite2D" parent="." unique_id=1389941717]
+z_index = 1001
+position = Vector2(-1, -21)
+scale = Vector2(1.0053124, 1.0053124)
+sprite_frames = SubResource("SpriteFrames_bomb")
+animation = &"boom"
+frame = 7
+frame_progress = 1.0
+
+[node name="ImpactRing" type="Line2D" parent="." unique_id=516907229]
+visible = false
+z_index = 1002
+points = PackedVector2Array(18, 0, 17.119, 5.562, 14.562, 10.58, 10.58, 14.562, 5.562, 17.119, 0, 18, -5.562, 17.119, -10.58, 14.562, -14.562, 10.58, -17.119, 5.562, -18, 0, -17.119, -5.562, -14.562, -10.58, -10.58, -14.562, -5.562, -17.119, 0, -18, 5.562, -17.119, 10.58, -14.562, 14.562, -10.58, 17.119, -5.562)
+closed = true
+width = 3.0
+default_color = Color(1, 0.84, 0.52, 0.95)
+antialiased = true

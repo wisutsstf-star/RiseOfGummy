@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://c2ivvtay7g25y"]
+
+[ext_resource type="Script" uid="uid://cchm0hs45xg1p" path="res://shared/enemies/jelly_Straw/scripts/jelly_straw_projectile.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://cl0lluprttmvj" path="res://shared/enemies/jelly_Straw/hit2.png" id="2_s334e"]
+[ext_resource type="Texture2D" uid="uid://domflncf76p0b" path="res://characters/pig/assets/pig_hit.png" id="3_b6vpl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b6vpl"]
+atlas = ExtResource("2_s334e")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hlu11"]
+atlas = ExtResource("2_s334e")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wg56b"]
+atlas = ExtResource("2_s334e")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8fto2"]
+atlas = ExtResource("3_b6vpl")
+region = Rect2(170, 0, 85, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d7pq8"]
+atlas = ExtResource("3_b6vpl")
+region = Rect2(85, 0, 85, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_simdi"]
+atlas = ExtResource("3_b6vpl")
+region = Rect2(0, 0, 85, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jelly_straw_projectile"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b6vpl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hlu11")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wg56b")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8fto2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d7pq8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_simdi")
+}],
+"loop": true,
+"name": &"hit",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jelly_straw_projectile"]
+radius = 12.0
+
+[node name="JellyStrawProjectile" type="Area2D" unique_id=1262311358]
+collision_layer = 4
+script = ExtResource("1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2001221491]
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_jelly_straw_projectile")
+animation = &"hit"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2120804666]
+shape = SubResource("CircleShape2D_jelly_straw_projectile")

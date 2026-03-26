@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dmh0j0d7m1l5l"]
+
+[ext_resource type="Script" uid="uid://cvxkr1pxtal2v" path="res://shared/ui/scripts/damage_number.gd" id="1_d8j4k"]
+[ext_resource type="Texture2D" uid="uid://ckwwt2aa83g86" path="res://assets/ui/crit_icon.png" id="2_axxxx"]
+
+[node name="DamageNumber" type="Node2D" unique_id=275631899]
+script = ExtResource("1_d8j4k")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1293864985]
+position = Vector2(-16, -6.0000005)
+scale = Vector2(0.6388889, 0.575)
+texture = ExtResource("2_axxxx")
+
+[node name="Label" type="Label" parent="." unique_id=239941469]
+offset_left = -2.0
+offset_top = -15.0
+offset_right = 38.0
+offset_bottom = 8.0
+text = "99"
+vertical_alignment = 1

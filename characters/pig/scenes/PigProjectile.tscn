@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://oq84mh4nk53"]
+
+[ext_resource type="Script" uid="uid://b3w6vqwmefdwv" path="res://scripts/projectiles/pig_projectile.gd" id="1_e5pk1"]
+[ext_resource type="Texture2D" uid="uid://cm0miu2nap8m4" path="res://characters/pig/assets/pig_bullet.png" id="2_nkc8s"]
+[ext_resource type="Texture2D" uid="uid://domflncf76p0b" path="res://characters/pig/assets/pig_hit.png" id="3_w36a0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_keg58"]
+atlas = ExtResource("2_nkc8s")
+region = Rect2(0, 0, 85, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e4sb5"]
+atlas = ExtResource("2_nkc8s")
+region = Rect2(85, 0, 85, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gf452"]
+atlas = ExtResource("2_nkc8s")
+region = Rect2(170, 0, 85, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8r8yt"]
+atlas = ExtResource("3_w36a0")
+region = Rect2(0, 0, 85, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_irayl"]
+atlas = ExtResource("3_w36a0")
+region = Rect2(85, 0, 85, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v7884"]
+atlas = ExtResource("3_w36a0")
+region = Rect2(170, 0, 85, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1sbwg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_keg58")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e4sb5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gf452")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8r8yt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_irayl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v7884")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="1"]
+
+[node name="Projectile" type="Area2D" unique_id=1270517442]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_e5pk1")
+damage = 40
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1638458417]
+position = Vector2(-15, 0)
+sprite_frames = SubResource("SpriteFrames_1sbwg")
+animation = &"fly"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=56052347]
+position = Vector2(-1, 0)
+shape = SubResource("1")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=413870308]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

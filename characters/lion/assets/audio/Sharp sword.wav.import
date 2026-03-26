@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cxfx0gjl54c4w"
+path="res://.godot/imported/Sharp sword.wav-0a0061f55918f0467b8487ff63613870.sample"
+
+[deps]
+
+source_file="res://characters/lion/assets/audio/Sharp sword.wav"
+dest_files=["res://.godot/imported/Sharp sword.wav-0a0061f55918f0467b8487ff63613870.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

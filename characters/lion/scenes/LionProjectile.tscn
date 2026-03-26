@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://ci8x2l1c1b12x"]
+
+[ext_resource type="Script" uid="uid://b8i0krgjg4c0p" path="res://scripts/projectiles/lion_projectile.gd" id="1_3ppk0"]
+[ext_resource type="Texture2D" uid="uid://cgrrl3ndnfl3s" path="res://characters/lion/assets/lion_sword_wave_small.png" id="3_jg3xj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ptif0"]
+atlas = ExtResource("3_jg3xj")
+region = Rect2(0, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6fxgl"]
+atlas = ExtResource("3_jg3xj")
+region = Rect2(0, 64, 128, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6c0nk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ptif0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6fxgl")
+}],
+"loop": true,
+"name": &"sword_wave",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1"]
+radius = 49.010204
+
+[node name="LionProjectile" type="Area2D" unique_id=1307624871]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_3ppk0")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1491670768]
+position = Vector2(-1, 6)
+scale = Vector2(1.4999999, 2.171875)
+sprite_frames = SubResource("SpriteFrames_6c0nk")
+animation = &"sword_wave"
+frame_progress = 0.83434993
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=309044880]
+position = Vector2(1, 8)
+shape = SubResource("CircleShape2D_1")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1074251917]
+position = Vector2(-5, 7)
+scale = Vector2(8, 8)
+rect = Rect2(-12.875, -10, 23.875, 20)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="queue_free"]

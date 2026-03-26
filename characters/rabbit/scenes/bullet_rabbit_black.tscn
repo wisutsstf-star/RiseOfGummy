@@ -1,0 +1,95 @@
+[gd_scene format=3 uid="uid://td0y06p4mlsy"]
+
+[ext_resource type="Script" uid="uid://c6wftgvnnyqoc" path="res://scripts/projectiles/rabbit_black_bullet.gd" id="1_oc2j1"]
+[ext_resource type="Texture2D" uid="uid://d1i32kqxsisqm" path="res://characters/rabbit/assets/rabbit_bullet_black.png" id="2_pvjgk"]
+[ext_resource type="Texture2D" uid="uid://rya6u0j6qm1m" path="res://characters/rabbit/assets/headshot_effect.png" id="3_w61w2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6obps"]
+atlas = ExtResource("2_pvjgk")
+region = Rect2(0, 0, 85, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1g3jw"]
+atlas = ExtResource("2_pvjgk")
+region = Rect2(85, 0, 85, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d0oml"]
+atlas = ExtResource("2_pvjgk")
+region = Rect2(170, 0, 85, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ptgdg"]
+atlas = ExtResource("3_w61w2")
+region = Rect2(0, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pem0k"]
+atlas = ExtResource("3_w61w2")
+region = Rect2(80, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dcvss"]
+atlas = ExtResource("3_w61w2")
+region = Rect2(160, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_luhn5"]
+atlas = ExtResource("3_w61w2")
+region = Rect2(240, 0, 80, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ptgdg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6obps")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1g3jw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d0oml")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ptgdg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ptgdg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pem0k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dcvss")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_luhn5")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bullet"]
+radius = 12.0
+
+[node name="RabbitBlackBullet" type="Area2D" unique_id=1392059346]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_oc2j1")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1477268986]
+position = Vector2(0.99999905, 2)
+scale = Vector2(0.92201275, 0.92201287)
+sprite_frames = SubResource("SpriteFrames_ptgdg")
+animation = &"fly"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1448005261]
+position = Vector2(-2, 0)
+shape = SubResource("CircleShape2D_bullet")
+
+[node name="Timer" type="Timer" parent="." unique_id=1039022526]
+wait_time = 5.0
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

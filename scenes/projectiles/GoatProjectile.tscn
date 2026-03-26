@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://gx41aqgnacto"]
+
+[ext_resource type="Script" path="res://scripts/projectiles/goat_projectile.gd" id="1_script"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_1"]
+size = Vector2(20, 20)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1"]
+
+[node name="GoatProjectile" type="Area2D" unique_id=826238639]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_script")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=324841737]
+modulate = Color(0.9, 0.9, 0.9, 1)
+texture = SubResource("PlaceholderTexture2D_1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1375077937]
+shape = SubResource("CircleShape2D_1")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=2089975688]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="queue_free"]

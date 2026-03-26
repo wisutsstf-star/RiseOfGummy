@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://oo2gofopitfe"]
+
+[ext_resource type="Script" uid="uid://b3w6vqwmefdwv" path="res://scripts/projectiles/pig_projectile.gd" id="1_script"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1"]
+
+[node name="PigProjectile" type="Area2D" unique_id=2075457890]
+script = ExtResource("1_script")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=987807729]
+shape = SubResource("CircleShape2D_1")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=2102712831]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=709324192]
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+color = Color(1, 0.6, 0.6, 1)

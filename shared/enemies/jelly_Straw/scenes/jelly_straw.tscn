@@ -1,0 +1,195 @@
+[gd_scene format=3 uid="uid://ddp67ouwsmhg0"]
+
+[ext_resource type="Script" uid="uid://d1dmlh2lfeyif" path="res://shared/enemies/jelly_Straw/scripts/jelly_straw.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://guj2574rcilt" path="res://shared/enemies/jelly_Straw/walk.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://bpsm20se2whm6" path="res://shared/enemies/jelly_Straw/hurt.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://cce3ha6n1ectx" path="res://shared/enemies/jelly_Straw/projectile.png" id="4_g1es3"]
+[ext_resource type="Texture2D" uid="uid://xkf2684vn0i7" path="res://shared/enemies/jelly_Straw/death_normal.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://dai7e4cki31cl" path="res://shared/enemies/jelly_Straw/death_explode.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://xjoxavgmdmym" path="res://shared/enemies/jelly_Straw/slash.png" id="7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g1es3"]
+atlas = ExtResource("5")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8kdvt"]
+atlas = ExtResource("5")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ei3g"]
+atlas = ExtResource("5")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xemd5"]
+atlas = ExtResource("6")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_expyl"]
+atlas = ExtResource("6")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bxt7x"]
+atlas = ExtResource("6")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y5wje"]
+atlas = ExtResource("4_g1es3")
+region = Rect2(246, 0, 123, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q37ej"]
+atlas = ExtResource("4_g1es3")
+region = Rect2(123, 0, 123, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xji8i"]
+atlas = ExtResource("4_g1es3")
+region = Rect2(0, 0, 123, 128)
+
+[sub_resource type="AtlasTexture" id="AT_hurt0"]
+atlas = ExtResource("4")
+region = Rect2(0, 0, 123, 128)
+
+[sub_resource type="AtlasTexture" id="AT_hurt1"]
+atlas = ExtResource("4")
+region = Rect2(123, 0, 123, 128)
+
+[sub_resource type="AtlasTexture" id="AT_hurt2"]
+atlas = ExtResource("4")
+region = Rect2(246, 0, 124, 128)
+
+[sub_resource type="AtlasTexture" id="AT_slash0"]
+atlas = ExtResource("7")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AT_slash1"]
+atlas = ExtResource("7")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AT_slash2"]
+atlas = ExtResource("7")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AT_slash3"]
+atlas = ExtResource("7")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AT_walk0"]
+atlas = ExtResource("2")
+region = Rect2(0, 0, 123, 128)
+
+[sub_resource type="AtlasTexture" id="AT_walk1"]
+atlas = ExtResource("2")
+region = Rect2(123, 0, 123, 128)
+
+[sub_resource type="AtlasTexture" id="AT_walk2"]
+atlas = ExtResource("2")
+region = Rect2(246, 0, 124, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jelly_straw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g1es3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8kdvt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ei3g")
+}],
+"loop": false,
+"name": &"die",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xemd5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_expyl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bxt7x")
+}],
+"loop": false,
+"name": &"explode",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y5wje")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q37ej")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xji8i")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AT_hurt0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AT_hurt1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AT_hurt2")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AT_slash0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AT_slash1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AT_slash2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AT_slash3")
+}],
+"loop": false,
+"name": &"slash",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AT_walk0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AT_walk1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AT_walk2")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jelly_straw"]
+size = Vector2(80, 75)
+
+[node name="JellyStraw" type="CharacterBody2D" unique_id=276808587]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1")
+max_hp = 150
+damage = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1300507430]
+position = Vector2(1, -6.2926807)
+scale = Vector2(0.47332314, 0.47332314)
+sprite_frames = SubResource("SpriteFrames_jelly_straw")
+animation = &"walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=983861498]
+position = Vector2(2, -2.5)
+shape = SubResource("RectangleShape2D_jelly_straw")

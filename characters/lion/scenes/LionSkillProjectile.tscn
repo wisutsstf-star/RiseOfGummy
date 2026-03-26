@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://bca0ju6syiqs4"]
+
+[ext_resource type="Script" uid="uid://g26okrvxvd37" path="res://scripts/projectiles/lion_skill_projectile.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://51exv4oivvv8" path="res://characters/lion/assets/Energy Slash_1.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://5iqgt0tkykao" path="res://characters/lion/assets/Energy Slash_2.png" id="3"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_es"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 4.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_es"]
+size = Vector2(147, 128)
+
+[node name="LionSkillProjectile" type="Area2D" unique_id=1432376529]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1")
+push_force = 450.0
+speed = 800.0
+movement_drag = 1.0
+auto_fade_delay = 1.7
+fade_speed = 4.0
+lifetime_seconds = 2.0
+damage_hit_cooldown = 0.3
+repeat_hit_while_overlapping = true
+overlap_hit_interval = 0.3
+enable_chain_collision_damage = false
+chain_collision_check_interval = 0.08
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1638477068]
+position = Vector2(0, -0.9999981)
+scale = Vector2(0.60304564, 0.6030457)
+sprite_frames = SubResource("SpriteFrames_es")
+animation = &"fly"
+autoplay = "fly"
+frame_progress = 0.80910826
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=714012970]
+position = Vector2(-2, 0)
+shape = SubResource("RectangleShape2D_es")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=3918603]
+position = Vector2(29, 0)
+scale = Vector2(4, 8)
+rect = Rect2(-26, -7.875, 36, 15.875)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="queue_free"]

@@ -1,0 +1,162 @@
+[gd_scene format=3 uid="uid://jbmelee001"]
+
+[ext_resource type="Script" uid="uid://2gr62fhxfxig" path="res://shared/enemies/jelly_bean_melee/scripts/jelly_bean_melee.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://c1iqoe8obqfry" path="res://shared/enemies/jelly_bean_melee/assets/walk.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://cuw5rxjekvm8c" path="res://shared/enemies/jelly_bean_melee/assets/hit.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://pwasccd1r1m2" path="res://shared/enemies/jelly_bean_melee/assets/hurt.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://b48hldv37e14m" path="res://shared/enemies/jelly_bean_melee/assets/die.png" id="5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h7evt"]
+atlas = ExtResource("5")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a7gb5"]
+atlas = ExtResource("5")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8wavo"]
+atlas = ExtResource("5")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xhlc5"]
+atlas = ExtResource("5")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hit0"]
+atlas = ExtResource("3")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hit1"]
+atlas = ExtResource("3")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hit2"]
+atlas = ExtResource("3")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hit3"]
+atlas = ExtResource("3")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hurt0"]
+atlas = ExtResource("4")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hurt1"]
+atlas = ExtResource("4")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hurt2"]
+atlas = ExtResource("4")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hurt3"]
+atlas = ExtResource("4")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_walk3"]
+atlas = ExtResource("2")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_walk2"]
+atlas = ExtResource("2")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_walk1"]
+atlas = ExtResource("2")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_walk0"]
+atlas = ExtResource("2")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jbm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h7evt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a7gb5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8wavo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xhlc5")
+}],
+"loop": false,
+"name": &"die",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hit0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hit1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hit2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hit3")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hurt0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hurt1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hurt2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hurt3")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_walk3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_walk2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_walk1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_walk0")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h7evt"]
+size = Vector2(48, 50)
+
+[node name="JellyBeanMelee" type="CharacterBody2D" unique_id=129203232]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1")
+damage = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=95086343]
+scale = Vector2(0.3125, 0.3125)
+sprite_frames = SubResource("SpriteFrames_jbm")
+animation = &"hurt"
+frame = 3
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=364625377]
+position = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_h7evt")

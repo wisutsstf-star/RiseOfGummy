@@ -1,0 +1,135 @@
+[gd_scene format=3 uid="uid://heropig001"]
+
+[ext_resource type="Script" uid="uid://b3hx6s1h50fl2" path="res://scripts/heroes/hero_pig.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://oq84mh4nk53" path="res://characters/pig/scenes/PigProjectile.tscn" id="2"]
+[ext_resource type="Texture2D" uid="uid://c4wag6u4s7mw1" path="res://characters/pig/assets/pig_attack.png" id="3_1ixrx"]
+[ext_resource type="Texture2D" uid="uid://dbmmdj5dlg5kw" path="res://assets/portraits/ui_hero_pig.png" id="3_82jrt"]
+[ext_resource type="Texture2D" uid="uid://dirfl6rhcrt8s" path="res://assets/portraits/ui_hero_pig_skill_1.png" id="4_fmd05"]
+[ext_resource type="Texture2D" uid="uid://dh0coa76xv0v8" path="res://characters/pig/assets/pig_idle.png" id="4_w1niu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_82jrt"]
+atlas = ExtResource("3_1ixrx")
+region = Rect2(1536, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fmd05"]
+atlas = ExtResource("3_1ixrx")
+region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fnkve"]
+atlas = ExtResource("3_1ixrx")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bgveg"]
+atlas = ExtResource("3_1ixrx")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4mqoh"]
+atlas = ExtResource("3_1ixrx")
+region = Rect2(1536, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_puxxv"]
+atlas = ExtResource("3_1ixrx")
+region = Rect2(1024, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u0pny"]
+atlas = ExtResource("3_1ixrx")
+region = Rect2(512, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4vsbb"]
+atlas = ExtResource("3_1ixrx")
+region = Rect2(0, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j74fr"]
+atlas = ExtResource("4_w1niu")
+region = Rect2(1536, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5eeqa"]
+atlas = ExtResource("4_w1niu")
+region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oh3xj"]
+atlas = ExtResource("4_w1niu")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cn4yj"]
+atlas = ExtResource("4_w1niu")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="GDScript" id="GDScript_1ixrx"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rg12m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_82jrt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fmd05")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fnkve")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bgveg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4mqoh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_puxxv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u0pny")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4vsbb")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j74fr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5eeqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oh3xj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cn4yj")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 4.0
+}]
+script = SubResource("GDScript_1ixrx")
+
+[sub_resource type="CircleShape2D" id="1"]
+radius = 35.0
+
+[node name="HeroPig" type="CharacterBody2D" unique_id=1941797795]
+collision_mask = 2
+script = ExtResource("1")
+projectile_scene = ExtResource("2")
+attack_range = 700.0
+avatar_icon = ExtResource("3_82jrt")
+skill_icon = ExtResource("4_fmd05")
+skill_color = Color(1, 0.5, 0.6, 1)
+max_hp = 500
+attack = 20
+crit_chance = 0.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1095665741]
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_rg12m")
+animation = &"attack"
+autoplay = "idle"
+frame = 7
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1100162870]
+position = Vector2(4, 31)
+shape = SubResource("1")

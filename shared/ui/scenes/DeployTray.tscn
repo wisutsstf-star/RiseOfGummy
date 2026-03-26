@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://dri2hk1ih5qen"]
+
+[ext_resource type="Script" uid="uid://lxd81e7i01u2" path="res://shared/ui/scripts/deploy_tray.gd" id="1"]
+
+[node name="DeployTray" type="Control" unique_id=1517697464]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 20.0
+offset_top = 574.0
+offset_right = 420.0
+offset_bottom = 674.0
+script = ExtResource("1")

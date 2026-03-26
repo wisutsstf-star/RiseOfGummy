@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://crystal001"]
+
+[ext_resource type="Script" uid="uid://8dyd8125c2un" path="res://scripts/crystal_heart.gd" id="1_t82qj"]
+[ext_resource type="Texture2D" uid="uid://qqgdx4udbx0e" path="res://shared/backgrounds/base.png" id="2_uwvpi"]
+
+[sub_resource type="CircleShape2D" id="1"]
+radius = 50.0
+
+[node name="CrystalHeart" type="Area2D"]
+script = ExtResource("1_t82qj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -24)
+scale = Vector2(0.6025424, 0.6025424)
+texture = ExtResource("2_uwvpi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("1")

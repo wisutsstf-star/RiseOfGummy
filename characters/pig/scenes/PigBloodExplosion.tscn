@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://bkbk84mq1gesx"]
+
+[ext_resource type="Script" uid="uid://tn4g6mfqc43f" path="res://scripts/heroes/pig_blood_explosion.gd" id="1_script"]
+[ext_resource type="AudioStream" uid="uid://daxxdts350alm" path="res://characters/pig/assets/audio/blood_pig_hit.wav" id="2_sound"]
+[ext_resource type="Texture2D" uid="uid://bhmdhq23xmx5s" path="res://characters/pig/assets/big_red_sphere.png" id="3_sphere"]
+[ext_resource type="Texture2D" uid="uid://cotcoroq0kt8j" path="res://characters/pig/assets/Suction Effect (5).png" id="4_suction_finish"]
+
+[sub_resource type="CanvasItemMaterial" id="1_glow"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="2_flash_gradient"]
+colors = PackedColorArray(1, 0.45, 0.45, 0.95, 1, 0.05, 0.05, 0)
+
+[sub_resource type="GradientTexture2D" id="3_flash_texture"]
+gradient = SubResource("2_flash_gradient")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[node name="PigBloodExplosion" type="Node2D" unique_id=158520716]
+script = ExtResource("1_script")
+
+[node name="ExplosionSound" type="AudioStreamPlayer2D" parent="." unique_id=1324517059]
+stream = ExtResource("2_sound")
+max_distance = 1800.0
+attenuation = 0.8
+volume_db = -6.0
+
+[node name="BigRedSphere" type="Sprite2D" parent="." unique_id=616915337]
+modulate = Color(1, 1, 1, 0)
+material = SubResource("1_glow")
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_sphere")
+
+[node name="Flash" type="Sprite2D" parent="." unique_id=957216693]
+modulate = Color(1, 1, 1, 0)
+material = SubResource("1_glow")
+scale = Vector2(0.2, 0.1)
+texture = SubResource("3_flash_texture")
+
+[node name="FinishSuction" type="Sprite2D" parent="." unique_id=1568429132]
+modulate = Color(1, 1, 1, 0)
+material = SubResource("1_glow")
+scale = Vector2(0.16, 0.08)
+texture = ExtResource("4_suction_finish")

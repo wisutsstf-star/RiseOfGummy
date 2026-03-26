@@ -1,0 +1,106 @@
+[gd_scene format=3 uid="uid://dblnflnsps64u"]
+
+[ext_resource type="Script" uid="uid://bcla5ha4sxq0x" path="res://scripts/main.gd" id="1_script"]
+[ext_resource type="PackedScene" uid="uid://crystal001" path="res://scenes/crystal_heart.tscn" id="2_crystal"]
+[ext_resource type="Texture2D" uid="uid://ddr0ojf2rpvaw" path="res://shared/backgrounds/background.png" id="3_bg"]
+[ext_resource type="PackedScene" uid="uid://heropig001" path="res://characters/pig/scenes/hero_pig.tscn" id="4_pig"]
+[ext_resource type="PackedScene" uid="uid://c3ydxcysuq605" path="res://characters/rabbit/scenes/hero_rabbit.tscn" id="5_rabbit"]
+[ext_resource type="PackedScene" uid="uid://herolion001" path="res://characters/lion/scenes/hero_lion.tscn" id="6_lion"]
+[ext_resource type="Script" uid="uid://dm8y5y7x3qhd7" path="res://wave_manager.gd" id="7_wave"]
+[ext_resource type="PackedScene" uid="uid://jbmelee001" path="res://shared/enemies/jelly_bean_melee/scenes/jelly_bean_melee.tscn" id="8_melee"]
+[ext_resource type="PackedScene" uid="uid://djxuvuiyrl076" path="res://shared/enemies/jelly_bean_2/scenes/jelly_bean_2.tscn" id="9_ranged"]
+[ext_resource type="AudioStream" path="res://shared/audio/bgm/Clockwork Cupcake Clash.mp3" id="10_bgm"]
+[ext_resource type="AudioStream" path="res://shared/audio/sfx/pick_card.wav" id="11_pick_card"]
+
+[node name="Main" type="Node2D" unique_id=2105688015]
+script = ExtResource("1_script")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(800, 360)
+
+[node name="Background" type="Sprite2D" parent="." unique_id=69888616]
+position = Vector2(800, 360)
+scale = Vector2(1.0392442, 1.0392442)
+texture = ExtResource("3_bg")
+
+[node name="Stage1BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_bgm")
+volume_db = -16.0
+
+[node name="PickCardSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_pick_card")
+volume_db = -8.0
+
+[node name="CrystalHeart" parent="." unique_id=1517910018 instance=ExtResource("2_crystal")]
+position = Vector2(802, 248)
+
+[node name="Heroes" type="Node2D" parent="." unique_id=1963001001]
+
+[node name="HeroPig" parent="Heroes" unique_id=1385429065 instance=ExtResource("4_pig")]
+position = Vector2(692, 200)
+
+[node name="HeroRabbit" parent="Heroes" unique_id=752040180 instance=ExtResource("5_rabbit")]
+position = Vector2(779, 264)
+
+[node name="HeroLion" parent="Heroes" unique_id=1881040402 instance=ExtResource("6_lion")]
+position = Vector2(892, 216)
+
+[node name="WaveManager" type="Node2D" parent="." unique_id=1700000001]
+script = ExtResource("7_wave")
+jelly_bean_melee_scene = ExtResource("8_melee")
+jelly_bean_2_scene = ExtResource("9_ranged")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1700000002]
+
+[node name="HPContainer" type="HBoxContainer" parent="UI" unique_id=1700000003]
+anchors_preset = -1
+anchor_top = 0.056
+anchor_bottom = 0.056
+offset_left = 24.0
+offset_top = -20.32
+offset_right = 260.0
+offset_bottom = 19.68
+theme_override_constants/separation = 16
+
+[node name="HPLabel" type="Label" parent="UI/HPContainer" unique_id=1700000004]
+layout_mode = 2
+text = "HP: 0/0"
+
+[node name="PotionRect" type="ColorRect" parent="UI/HPContainer" unique_id=1700000008]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_vertical = 4
+color = Color(0.2, 0.4, 1, 1)
+
+[node name="PotionLabel" type="Label" parent="UI/HPContainer" unique_id=1700000009]
+layout_mode = 2
+text = "Potions: 0"
+
+[node name="EnemyLabel" type="Label" parent="UI" unique_id=1700000005]
+offset_left = 24.0
+offset_top = 58.0
+offset_right = 260.0
+offset_bottom = 90.0
+
+[node name="WaveStatusLabel" type="Label" parent="UI" unique_id=1700000006]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -180.0
+offset_top = 20.0
+offset_right = 180.0
+offset_bottom = 60.0
+horizontal_alignment = 1
+
+[node name="SkillContainer" type="HBoxContainer" parent="UI" unique_id=1700000007]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -308.0
+offset_top = -104.0
+offset_right = 308.0
+offset_bottom = -44.0
+theme_override_constants/separation = 12
+alignment = 1

@@ -1,0 +1,54 @@
+[gd_scene load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://scripts/skills/blood_pig_skill.gd" id="1_script"]
+[ext_resource type="AudioStream" path="res://characters/pig/assets/audio/blood_pig_cast2.wav" id="2_cast"]
+[ext_resource type="Texture2D" path="res://characters/pig/assets/magic_circle.png" id="3_magic"]
+
+[sub_resource type="CanvasItemMaterial" id="1_glow"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="2_aura_gradient"]
+colors = PackedColorArray(1, 0.1, 0.1, 0.25, 1, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="3_aura_texture"]
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+gradient = SubResource("2_aura_gradient")
+
+[sub_resource type="CircleShape2D" id="4_suction_shape"]
+
+[node name="BloodPigSkill" type="Node2D"]
+z_index = 50
+script = ExtResource("1_script")
+
+[node name="CastSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_cast")
+max_distance = 1600.0
+attenuation = 0.8
+volume_db = -6.0
+
+[node name="MagicCircle" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+scale = Vector2(0.16, 0.07)
+texture = ExtResource("3_magic")
+
+[node name="TopAura" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+material = SubResource("1_glow")
+scale = Vector2(0.6, 0.28)
+texture = SubResource("3_aura_texture")
+
+[node name="SuctionArea" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SuctionArea"]
+shape = SubResource("4_suction_shape")
+
+[node name="OrbContainer" type="Node2D" parent="."]
+
+[node name="CoreContainer" type="Node2D" parent="."]
+
+[node name="EffectContainer" type="Node2D" parent="."]

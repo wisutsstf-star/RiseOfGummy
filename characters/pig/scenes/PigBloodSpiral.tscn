@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://dplpvyyn7fo8b"]
+
+[ext_resource type="Script" uid="uid://b5ixj27hho58v" path="res://scripts/heroes/pig_blood_spiral.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://cmle5ndmxhfxl" path="res://characters/pig/assets/blood spiral.png" id="1_spiral"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_trtrv"]
+atlas = ExtResource("1_spiral")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x7otx"]
+atlas = ExtResource("1_spiral")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6x0bn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_trtrv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x7otx")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 5.0
+}]
+
+[node name="PigBloodSpiral" type="Node2D" unique_id=961839903]
+script = ExtResource("1_script")
+
+[node name="Spiral" type="AnimatedSprite2D" parent="." unique_id=1117020687]
+position = Vector2(-1.9073486e-06, -1.9999981)
+scale = Vector2(0.3125, 0.3125)
+sprite_frames = SubResource("SpriteFrames_6x0bn")
+animation = &"fly"
+frame_progress = 0.3711217

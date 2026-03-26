@@ -1,0 +1,27 @@
+C:\Users\WINDOWS 11 PRO\Documents\GAME\RiseOfGummy\characters\lion\scripts\hero_lion.gd:29 -> skill_projectile_scene = load("res://characters/lion/scenes/LionSkillProjectile.tscn")
+C:\Users\WINDOWS 11 PRO\Documents\GAME\RiseOfGummy\scripts\heroes\hero_pig.gd:45 -> _tex_magic_circle = load("res://characters/pig/assets/magic_circle.png")
+C:\Users\WINDOWS 11 PRO\Documents\GAME\RiseOfGummy\scripts\heroes\hero_pig.gd:46 -> _tex_red_sphere = load("res://characters/pig/assets/red_sphere.png")
+C:\Users\WINDOWS 11 PRO\Documents\GAME\RiseOfGummy\scripts\heroes\hero_pig.gd:47 -> _tex_smoke = load("res://characters/pig/assets/smoke_particle.png")
+C:\Users\WINDOWS 11 PRO\Documents\GAME\RiseOfGummy\scripts\heroes\hero_pig.gd:51 -> var tex_path = "res://characters/pig/assets/orbit_spark (%d).png" % i
+C:\Users\WINDOWS 11 PRO\Documents\GAME\RiseOfGummy\scripts\heroes\hero_pig.gd:58 -> var tex_path = "res://characters/pig/assets/Suction Effect (%d).png" % i
+C:\Users\WINDOWS 11 PRO\Documents\GAME\RiseOfGummy\scripts\heroes\hero_pig.gd:63 -> _tex_big_red_sphere = load("res://characters/pig/assets/big_red_sphere.png")
+C:\Users\WINDOWS 11 PRO\Documents\GAME\RiseOfGummy\scripts\heroes\hero_pig.gd:64 -> _tex_suction_5 = load("res://characters/pig/assets/Suction Effect (5).png")
+C:\Users\WINDOWS 11 PRO\Documents\GAME\RiseOfGummy\scripts\heroes\hero_pig.gd:67 -> var tex_hit = load("res://characters/pig/assets/pig_hit.png")
+C:\Users\WINDOWS 11 PRO\Documents\GAME\RiseOfGummy\scripts\crystal_heart.gd:32 -> var damage_num_scene = preload("res://shared/ui/scenes/damage_number.tscn")
+C:\Users\WINDOWS 11 PRO\Documents\GAME\RiseOfGummy\scripts\enemy.gd:267 -> var damage_num_scene = preload("res://shared/ui/scenes/damage_number.tscn")
+C:\Users\WINDOWS 11 PRO\Documents\GAME\RiseOfGummy\scripts\hero.gd:599 -> var damage_num_scene = preload("res://shared/ui/scenes/damage_number.tscn")
+C:\Users\WINDOWS 11 PRO\Documents\GAME\RiseOfGummy\scripts\main.gd:11 -> var skill_btn_scene: PackedScene = preload("res://shared/ui/scenes/SkillButton.tscn")
+C:\Users\WINDOWS 11 PRO\Documents\GAME\RiseOfGummy\scripts\main.gd:12 -> var deploy_tray_scene: PackedScene = preload("res://shared/ui/scenes/DeployTray.tscn")
+C:\Users\WINDOWS 11 PRO\Documents\GAME\RiseOfGummy\scripts\main.gd:41 -> icon_path = "res://assets/portraits/ui_hero_rabbit.png"
+C:\Users\WINDOWS 11 PRO\Documents\GAME\RiseOfGummy\scripts\main.gd:42 -> skill_icon_path = "res://assets/portraits/ui_hero_rabbit_skill_1.png"
+C:\Users\WINDOWS 11 PRO\Documents\GAME\RiseOfGummy\scripts\main.gd:44 -> icon_path = "res://assets/portraits/ui_hero_lion.png"
+C:\Users\WINDOWS 11 PRO\Documents\GAME\RiseOfGummy\scripts\main.gd:45 -> skill_icon_path = "res://assets/portraits/ui_hero_lion_skill_1.png"
+C:\Users\WINDOWS 11 PRO\Documents\GAME\RiseOfGummy\scripts\main.gd:48 -> icon_path = "res://assets/portraits/ui_hero_pig.png"
+C:\Users\WINDOWS 11 PRO\Documents\GAME\RiseOfGummy\scripts\main.gd:49 -> skill_icon_path = "res://assets/portraits/ui_hero_pig_skill_1.png"
+C:\Users\WINDOWS 11 PRO\Documents\GAME\RiseOfGummy\scripts\rabbit_character.gd:32 -> var bullet = preload("res://characters/rabbit/scenes/RabbitProjectile.tscn").instantiate()
+C:\Users\WINDOWS 11 PRO\Documents\GAME\RiseOfGummy\scripts\rabbit_character.gd:241 -> var bullet_scene = preload("res://characters/rabbit/scenes/bullet_rabbit_black.tscn")
+C:\Users\WINDOWS 11 PRO\Documents\GAME\RiseOfGummy\shared\enemies\gummy_bear\scripts\gummy_bear.gd:1 -> extends "res://scripts/enemy.gd"
+C:\Users\WINDOWS 11 PRO\Documents\GAME\RiseOfGummy\shared\enemies\jelly_bean_2\scripts\jelly_bean_2.gd:1 -> extends "res://scripts/enemy.gd"
+C:\Users\WINDOWS 11 PRO\Documents\GAME\RiseOfGummy\shared\enemies\jelly_bean_melee\scripts\jelly_bean_melee.gd:1 -> extends "res://scripts/enemy.gd"
+C:\Users\WINDOWS 11 PRO\Documents\GAME\RiseOfGummy\shared\ui\scripts\skill_button.gd:61 -> if ResourceLoader.exists("res://shared/ui/assets/star_particle.png"):
+C:\Users\WINDOWS 11 PRO\Documents\GAME\RiseOfGummy\shared\ui\scripts\skill_button.gd:62 -> star_tex = load("res://shared/ui/assets/star_particle.png")

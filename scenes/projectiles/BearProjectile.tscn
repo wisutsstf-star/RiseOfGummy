@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://bh7lvyle0cg6b"]
+
+[ext_resource type="Script" path="res://scripts/projectiles/bear_projectile.gd" id="1_script"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_1"]
+size = Vector2(30, 30)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1"]
+radius = 15.0
+
+[node name="BearProjectile" type="Area2D" unique_id=852133012]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_script")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=341710654]
+modulate = Color(0.4, 0.2, 0.1, 1)
+texture = SubResource("PlaceholderTexture2D_1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=745845317]
+shape = SubResource("CircleShape2D_1")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=946333569]
+scale = Vector2(1.5, 1.5)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="queue_free"]

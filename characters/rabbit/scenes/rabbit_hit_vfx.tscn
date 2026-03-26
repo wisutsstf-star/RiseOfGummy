@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://c1lnjufs7jp1c"]
+
+[sub_resource type="GDScript" id="GDScript_2ncg2"]
+script/source = "extends Node2D
+
+@export var color: Color = Color(1.0, 0.4, 0.7) # Pink
+@export var duration: float = 0.5
+
+var _time: float = 0.0
+var _phase: int = 0 # 0: Star, 1: Burst+Rabbit, 2: Dissipate
+
+func _ready() -> void:
+	# Self destruct after animation
+	await get_tree().create_timer(duration).timeout
+	queue_free()
+
+func _process(delta: float) -> void:
+	_time += delta
+	queue_redraw()
+
+func _draw() -> void:
+	var center = Vector2.ZERO
+	var t = _time / duration
+	
+	if t < 0.2:
+		# Phase 1: Star (Spiky 4-point)
+		var size = 40.0 * (t / 0.2)
+		var points = PackedVector2Array([
+			Vector2(0, -size), Vector2(size * 0.2, -size * 0.2),
+			Vector2(size, 0), Vector2(size * 0.2, size * 0.2),
+			Vector2(0, size), Vector2(-size * 0.2, size * 0.2),
+			Vector2(-size, 0), Vector2(-size * 0.2, -size * 0.2)
+		])
+		draw_colored_polygon(points, color)
+		draw_polyline(points, Color.WHITE, 2.0, true) # White outline
+		
+	elif t < 0.5:
+		# Phase 2: Burst + Rabbit Silhouette
+		var size = 50.0
+		# Draw Burst (Jagged circle)
+		var burst_points = PackedVector2Array()
+		var num_points = 12
+		for i in range(num_points):
+			var angle = i * (TAU / num_points)
+			var r = size if i % 2 == 0 else size * 0.5
+			burst_points.append(Vector2(cos(angle), sin(angle)) * r)
+		draw_colored_polygon(burst_points, color)
+		
+		# Draw Rabbit Head Silhouette (White)
+		draw_circle(center, 15.0, Color.WHITE)
+		# Ears
+		draw_circle(center + Vector2(-8, -20), 5.0, Color.WHITE) # Left ear base
+		draw_circle(center + Vector2(8, -20), 5.0, Color.WHITE) # Right ear base
+		draw_line(center + Vector2(-8, -15), center + Vector2(-12, -35), Color.WHITE, 6.0) # Left ear
+		draw_line(center + Vector2(8, -15), center + Vector2(12, -35), Color.WHITE, 6.0) # Right ear
+		
+		# Eyes (Pink)
+		draw_circle(center + Vector2(-5, 5), 2.0, color)
+		draw_circle(center + Vector2(5, 5), 2.0, color)
+		
+	else:
+		# Phase 3: Dissipate (Particles handled by CPUParticles2D, here just fade out burst)
+		pass
+"
+
+[sub_resource type="Curve" id="Curve_scale"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="RabbitHitVFX" type="Node2D" unique_id=1193984059]
+script = SubResource("GDScript_2ncg2")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=626632343]
+emitting = false
+amount = 12
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 100.0
+scale_amount_min = 3.0
+scale_amount_max = 6.0
+scale_amount_curve = SubResource("Curve_scale")
+color = Color(1, 0.4, 0.7, 1)

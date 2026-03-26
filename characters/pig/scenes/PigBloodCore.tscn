@@ -1,0 +1,61 @@
+[gd_scene load_steps=10 format=3]
+
+[ext_resource type="Script" path="res://scripts/heroes/pig_blood_core.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://characters/pig/assets/red_sphere.png" id="2_sphere"]
+[ext_resource type="Texture2D" path="res://characters/pig/assets/orbit_spark.png" id="3_spark_sheet"]
+
+[sub_resource type="AtlasTexture" id="1_spark_1"]
+atlas = ExtResource("3_spark_sheet")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="2_spark_2"]
+atlas = ExtResource("3_spark_sheet")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="3_spark_3"]
+atlas = ExtResource("3_spark_sheet")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="4_spark_4"]
+atlas = ExtResource("3_spark_sheet")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="5_spark_5"]
+atlas = ExtResource("3_spark_sheet")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="6_spark_frames"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("1_spark_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("2_spark_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("3_spark_3")
+}, {
+"duration": 1.0,
+"texture": SubResource("4_spark_4")
+}, {
+"duration": 1.0,
+"texture": SubResource("5_spark_5")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 10.0
+}]
+
+[node name="PigBloodCore" type="Node2D"]
+script = ExtResource("1_script")
+
+[node name="CoreSprite" type="Sprite2D" parent="."]
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("2_sphere")
+
+[node name="OrbitSpark" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.372, 0.372)
+sprite_frames = SubResource("6_spark_frames")
+animation = &"fly"
+autoplay = "fly"
