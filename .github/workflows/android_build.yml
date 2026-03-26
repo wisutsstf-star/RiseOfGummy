@@ -1,0 +1,41 @@
+name: "Build Android APK"
+on:
+  push:
+    branches: [ "master", "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Export APK
+    runs-on: ubuntu-latest
+    container:
+      image: barichello/godot-ci:4.3 # หรือ 4.4/4.6 ถ้ามี
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      - name: Setup Android SDK
+        run: |
+          # โหลด Android SDK และกุญแจจำลอง
+          mkdir -p ~/.android
+          # สร้าง debug.keystore ไว้ใช้บิ๊วมือถือแบบทดสอบ
+          keytool -keyalg RSA -genkeypair -alias androiddebugkey -keypass android -keystore ~/.android/debug.keystore -storepass android -dname "CN=Android Debug,O=Android,C=US" -validity 9999
+          # ตั้งค่า Path ในเครื่องบิ๊ว
+          echo "/usr/lib/android-sdk" > ~/.android/sdk_path
+
+      - name: Create Export Folder
+        run: mkdir -v -p build/android
+
+      - name: Build Android APK
+        run: |
+          # ใช้ Godot Command Line บิ๊ว APK ออกมา
+          # หมายเหตุ: .godot/export_presets.cfg ต้องมี preset ชื่อ "Android"
+          godot -v --headless --export-debug "Android" build/android/RiseOfGummy.apk
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: RiseOfGummy-Android-APK
+          path: build/android/RiseOfGummy.apk
