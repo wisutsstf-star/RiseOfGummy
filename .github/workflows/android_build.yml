@@ -9,7 +9,7 @@ jobs:
     name: Export APK
     runs-on: ubuntu-latest
     container:
-      image: barichello/godot-ci:4.3 # หรือ 4.4/4.6 ถ้ามี
+      image: barichello/godot-ci:latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -21,9 +21,11 @@ jobs:
           mkdir -p ~/.android
           keytool -keyalg RSA -genkeypair -alias androiddebugkey -keypass android -keystore ~/.android/debug.keystore -storepass android -dname "CN=Android Debug,O=Android,C=US" -validity 9999
           
+          # หา Java 17 path
           JAVA_PATH=$(dirname $(dirname $(readlink -f $(which javac))))
           echo "Found Java at $JAVA_PATH"
           
+          # สร้าง config ให้ Godot ชี้หา Android SDK สำเร็จรูปใน docker
           mkdir -p ~/.config/godot
           cat <<EOF > ~/.config/godot/editor_settings-4.tres
           [gd_resource type="EditorSettings" format=3]
@@ -40,10 +42,7 @@ jobs:
         run: mkdir -v -p build/android
 
       - name: Build Android APK
-        run: |
-          # ใช้ Godot Command Line บิ๊ว APK ออกมา
-          # หมายเหตุ: .godot/export_presets.cfg ต้องมี preset ชื่อ "Android"
-          godot -v --headless --export-debug "Android" build/android/RiseOfGummy.apk
+        run: godot -v --headless --export-debug "Android" build/android/RiseOfGummy.apk
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
