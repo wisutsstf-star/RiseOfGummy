@@ -16,6 +16,12 @@ jobs:
         with:
           lfs: true
 
+      - name: Copy Godot Templates
+        run: |
+          # แก้ปัญหา GitHub Actions เปลี่ยน path $HOME เป็น /github/home ทำให้หา template ไม่เจอ
+          mkdir -p ~/.local/share/godot
+          cp -r /root/.local/share/godot/export_templates ~/.local/share/godot/
+
       - name: Setup Android SDK and Editor Settings
         run: |
           mkdir -p ~/.android
